@@ -64,7 +64,7 @@ const Footer = () => {
           </div>
         </div>
         {/* Second Column */}
-        <div className="flex-1 flexBetweenStart flex-wrap ml-10 mdLml-0 md:mt-8">
+        <div className="flex-1 flexBetweenStart flex-wrap ml-10 md:ml-0 md:mt-8">
           {/* Custom Components */}
           <FooterLinks
             heading="CryptoKet"
@@ -73,7 +73,7 @@ const Footer = () => {
         </div>
 
         {/* Third Column */}
-        <div className="flex-1 flexBetweenStart flex-wrap ml-10 mdLml-0 md:mt-8">
+        <div className="flex-1 flexBetweenStart flex-wrap ml-10 md:ml-0 md:mt-8">
           {/* Custom Components */}
           <FooterLinks
             heading="Support"

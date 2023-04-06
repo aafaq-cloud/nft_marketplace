@@ -7,12 +7,20 @@ import { useDropzone } from 'react-dropzone';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 
-import { Button } from '../components/index';
+import { Button, Input } from '../components/index';
 import images from '../assets';
 
 const CreateNFT = () => {
   const [fileUrl, setFileUrl] = useState(null);
+  const [formInput, setFormInput] = useState({
+    price: '',
+    name: '',
+    description: '',
+  });
   const { theme } = useTheme();
+
+  console.log('Form input:');
+  console.log(formInput);
 
   // The onDrop has to be newly declared function and in here we want to upload our file to the ipfs which means to upload image to the blockchain
   // This function is not going to change often so wrap it in a useCallback()
@@ -62,19 +70,18 @@ const CreateNFT = () => {
   return (
     <div className="flex justify-center sm:px-4 p-12">
       <div className="w-3/5 md:w-full">
+        {/* Title */}
         <h1 className="font-poppins dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold">
           Create new NFT
         </h1>
+        {/* Drag and Drop Component */}
         <div className="mt-16">
           <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
             Upload File
           </p>
           <div className="mt-4">
             {/* This is going to inject all of the specific props that belongs to React Dropzone to our basic input field and the div */}
-            <div
-              {...getRootProps()}
-              className={fileStyle}
-            >
+            <div {...getRootProps()} className={fileStyle}>
               <input {...getInputProps()} />
               <div className="flexCenter flex-col text-center">
                 <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl">
@@ -108,6 +115,48 @@ const CreateNFT = () => {
               </aside>
             )}
           </div>
+        </div>
+        {/* Custom Input Component */}
+        {/* handleClick to update our specific form input */}
+        {/* Name input field */}
+        <Input
+          inputType="text"
+          title="Name"
+          placeholder="NFT Name"
+          handleClick={(e) =>
+            setFormInput({ ...formInput, name: e.target.value })
+          }
+        />
+
+        {/* Description texarea */}
+        <Input
+          inputType="textarea"
+          title="Description"
+          placeholder="NFT Decription"
+          handleClick={(e) =>
+            setFormInput({ ...formInput, description: e.target.value })
+          }
+        />
+
+        {/* Price input field */}
+        <Input
+          inputType="number"
+          title="Price"
+          placeholder="NFT Price"
+          handleClick={(e) =>
+            setFormInput({ ...formInput, price: e.target.value })
+          }
+        />
+
+        {/* Submit Button */}
+        <div className="mt-7 w-full flex justify-end">
+          <Button
+            btnName="Create NFT"
+            classStyles="rounded-xl"
+            handleClick={(e) => {
+              console.log('Submit button to create nft');
+            }}
+          />
         </div>
       </div>
     </div>

@@ -4,13 +4,13 @@ import { useTheme } from 'next-themes';
 
 // import Banner from '../components/Banner';
 // import CreatorCard from '../components/CreatorCard';
-import { Banner, CreatorCard } from '../components';
+import { Banner, CreatorCard, NFTCard } from '../components';
 
 import images from '../assets';
 import { makeId } from '../utils/makeId';
 
 const Home = () => {
-  const [hideButtons, setHideButtons] = useState(false);
+  const [hideButtons, setHideButtons] = useState(true);
   console.log('Banner');
   const { theme } = useTheme();
   // Initialize ref
@@ -53,12 +53,14 @@ const Home = () => {
   return (
     <div className="flex justify-start sm:px-4 pb-12 px-12 pt-20">
       <div className="w-full">
+        {/* Main Banner */}
         <Banner
           name="Discover, collect, and sell extraordinary NFTs"
           childStyles="md:text-4xl sm:text-2xl xs:text-xl text-left"
           parentStyles="justify-start mb-6 h-72 sm:h-60 p-12 xs:p-4 xs:h-44 rounded-3xl"
         />
-        <div>
+        {/* Best Sellers or Creators */}
+        <div className="pt-10">
           <h1 className="font-poppins dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold ml-4 xs:ml-0">
             Best Sellers
           </h1>
@@ -122,6 +124,37 @@ const Home = () => {
               )}
             </div>
           </div>
+        </div>
+        {/* Hot Bids */}
+        <div className="mt-10 flexBetween mx-4 xs:mx-0 minlg:mx-8 sm:flex-col sm:items-start">
+          {/* Heading */}
+          <h1 className="flex-1 font-poppins dark:text-white text-nft-black-1 text-2xl minlg:text-4xl font-semibold sm:mb-4">
+            Top Bids
+          </h1>
+          {/* Searchbar */}
+          {/* Searching or Filtering through the NFTS and not the entire page */}
+          {/* Filter tag */}
+          {/* Reuse component in Hot Bids and My NFTS on Profile Page */}
+          <div>Searhbar</div>
+        </div>
+        {/* Bids Cards */}
+        <div className="mt-3 w-full flex flex-wrap justify-start md:justify-center">
+          {/* Map over NFTS */}
+          {/* Create NFTCard */}
+          {/* Later on owner and creator name will be dynamic */}
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+            <NFTCard
+              key={`nft-${i}`}
+              nft={{
+                i,
+                name: `Nifty NFT ${i}`,
+                price: (10 - i * 0.534).toFixed(2),
+                seller: `0x${makeId(3)}...${makeId(4)}`,
+                owner: `0x${makeId(3)}...${makeId(4)}`,
+                description: 'Cool NFT on Sale',
+              }}
+            />
+          ))}
         </div>
       </div>
     </div>

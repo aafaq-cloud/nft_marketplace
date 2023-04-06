@@ -138,7 +138,7 @@ const Home = () => {
           <div>Searhbar</div>
         </div>
         {/* Bids Cards */}
-        <div className="mt-3 w-full flex flex-wrap justify-start md:justify-center">
+        <div className="mt-3 w-full flex flex-wrap justify-center">
           {/* Map over NFTS */}
           {/* Create NFTCard */}
           {/* Later on owner and creator name will be dynamic */}

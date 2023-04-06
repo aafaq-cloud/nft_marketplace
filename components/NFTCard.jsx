@@ -10,7 +10,8 @@ const NFTCard = ({ nft }) => {
   // Dynamic Link
   //   return <Link href={{ pathname: '/nft-details', query: { nft } }}>nft</Link>;
   return (
-    <Link href="/ntf-details">
+    // <Link href={`/nft-details?nft=${nft.i}`}>
+    <Link href={{ pathname: '/nft-details', query: nft }}>
       <div className="flex-1 min-w-215 max-w-max xs:max-w-none sm:w-full minmd:min-w-256 minlg:min-w-327 dark:bg-nft-black-3 bg-white rounded-2xl p-4 m-4 minlg:m-8 sm:my-2 sm:mx-2 cursor-pointer">
         <div className="relative w-full h-52 sm:h-36 xs:h-56 minmd:h-60 minlg:h-300 rounded-2xl">
           <Image
